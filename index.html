@@ -255,6 +255,8 @@
   /* ========== COVER ========== */
   #cover {
     background: linear-gradient(165deg, #FDF6E9 0%, #F8E8D0 45%, #F5DCC0 100%);
+    justify-content: flex-start;
+    padding: 88px 20px 12px;
   }
   .om-text {
     font-family: 'Playfair Display', serif;
@@ -288,23 +290,16 @@
     margin-bottom: 3px;
   }
   .couple-stage {
-    margin: 26px auto 8px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 8px;
+    width: min(88vw, 460px);
+    height: auto;
+    margin: auto auto 0;
   }
-  .couple-emoji {
-    font-size: 88px;
-    line-height: 1;
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
-    animation: gentle-bounce 3.4s ease-in-out infinite;
-    display: flex;
-    gap: 6px;
-  }
-  @keyframes gentle-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-7px); }
+  .cover-couple-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
   }
   .floral-left, .floral-right {
     position: absolute;
@@ -690,16 +685,13 @@
     The Parv Estate Farm
   </div>
 
-  <div class="couple-stage">
-    <div class="couple-emoji">
-      <span>👰🏻‍♀️</span>
-      <span>🤵🏻</span>
-    </div>
-  </div>
-
   <div class="floral-left">🌺</div>
   <div class="floral-right">🌹</div>
   <div class="ornament" style="margin-top:18px;">✦ ✦ ✦</div>
+
+  <div class="couple-stage">
+    <img class="cover-couple-image" src="Couple.png" alt="Bride and groom in their wedding attire">
+  </div>
 </section>
 
 <!-- ==================== MAIN INVITATION ==================== -->
