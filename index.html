@@ -438,52 +438,93 @@
   /* ========== FAMILY ========== */
   #family {
     background: linear-gradient(165deg, #FDF6E9, #F5E6D0);
+    padding: 80px 24px;
   }
   .family-title {
     font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 6vw, 3.2rem);
     color: var(--deep-red);
-    margin-bottom: 10px;
+    margin-bottom: 4px;
   }
   .regards-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    max-width: 520px;
-    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    width: min(100%, 900px);
+    margin-top: 20px;
   }
-  .name-row {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.28rem;
-    color: var(--text-dark);
-    padding: 4px 0;
-    font-weight: 500;
-  }
-  .name-row.couple {
-    color: var(--deep-red);
-    font-weight: 600;
-    font-size: 1.32rem;
-  }
-  .brothers-label {
-    width: 100%;
+  .family-group {
+    padding: 20px 22px;
+    background: rgba(255, 252, 245, 0.8);
+    border: 1px solid rgba(201, 162, 39, 0.38);
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(107, 15, 43, 0.06);
     text-align: center;
-    font-size: 0.9rem;
-    letter-spacing: 3px;
+  }
+  .family-group h3 {
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
     color: var(--gold);
-    margin: 16px 0 8px;
+  }
+  .family-group p {
+    font-size: 1.22rem;
+    line-height: 1.55;
+    color: var(--text-dark);
+  }
+  .family-group p strong {
+    color: var(--deep-red);
     font-weight: 600;
-    font-family: 'Poppins', sans-serif;
   }
-  .brothers-grid {
+  .family-group.featured p {
+    color: var(--deep-red);
+    font-weight: 600;
+  }
+  .family-group.wide {
+    grid-column: 1 / -1;
+  }
+  .family-group .family-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.95rem;
+    color: #806654;
+  }
+  .shlok-section {
+    width: min(100%, 760px);
+    margin: 18px 0 8px;
+    padding: 20px;
+    background: rgba(255, 252, 245, 0.78);
+    border: 1px solid rgba(201, 162, 39, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(107, 15, 43, 0.07);
+  }
+  .shlok-heading {
+    margin-bottom: 12px;
+    color: var(--deep-red);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    text-align: center;
+  }
+  .shlok-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .shlok-list blockquote {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 8px 22px;
-  }
-  .brothers-grid .name-row {
-    font-size: 1.2rem;
+    min-height: 104px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(201, 162, 39, 0.1);
+    color: #5a4030;
+    font-size: 1.12rem;
+    line-height: 1.8;
+    text-align: center;
   }
 
   /* ========== MEHENDI ========== */
@@ -589,6 +630,11 @@
     .bell.left { left: 12px; }
     .bell.right { right: 12px; }
     .opening-names { font-size: 2.6rem; }
+    .regards-list { grid-template-columns: 1fr; gap: 12px; }
+    .family-group.wide { grid-column: auto; }
+    .family-group { padding: 18px 16px; }
+    .shlok-list { grid-template-columns: 1fr; }
+    .shlok-section { padding: 16px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .curtain-panel,
@@ -670,7 +716,7 @@
     </div>
 
     <div class="hosts">
-      Mrs. Suman Bhatnagar and Late Shri Bhartesh Bhatnagar
+      Late Shri Bhatesh Bhatnagar and Mrs. Suman Bhatnagar
     </div>
     <div class="invite-line">Cordially invite you to grace the wedding of their son</div>
 
@@ -704,26 +750,47 @@
 <section class="section" id="family">
   <div class="string-lights" id="lights-family"></div>
 
-  <h2 class="family-title reveal">With Love &amp; Warm Regards</h2>
+  <h2 class="family-title reveal">Our Beloved Family</h2>
   <div class="ornament reveal">✦ ✦ ✦</div>
 
   <div class="regards-list reveal">
-    <div class="name-row couple">Umesh Kulshrestha</div>
-    <div class="name-row couple">Avinash &amp; Ishika</div>
-    <div class="name-row couple">Rajat &amp; Divya</div>
-
-    <div class="brothers-label">Brothers</div>
-    <div class="brothers-grid">
-      <div class="name-row">Vansh</div>
-      <div class="name-row">Devansh</div>      
-      <div class="name-row">Riyansh</div>
-      <div class="name-row">Somesh</div>
-      <div class="name-row">Sarthak</div>
-      <div class="name-row">Rudra</div>
-      <div class="name-row">Shivansh</div>
-      <div class="name-row">Parth</div>
-      <div class="name-row">Madhav</div>
-    </div>
+    <article class="family-group featured">
+      <h3>Grandparents</h3>
+      <p>Late Shri Vinod Bhatnagar <span class="family-note">Dada Ji</span></p>
+      <p>Late Mrs. Shakuntala Devi <span class="family-note">Dadi Ji</span></p>
+    </article>
+    <article class="family-group featured">
+      <h3>Parents</h3>
+      <p>Late Shri Bhatesh Bhatnagar <span class="family-note">Father</span></p>
+      <p>Mrs. Suman Bhatnagar <span class="family-note">Mother</span></p>
+    </article>
+    <article class="family-group">
+      <h3>Fufaji</h3>
+      <p>Shri Umesh Kulshreshtha</p>
+    </article>
+    <article class="family-group">
+      <h3>Jijaji &amp; Didi</h3>
+      <p>Avinash &amp; Ishika </p>
+      <p>Rajat &amp; Divya </p>
+    </article>
+    <article class="family-group wide">
+      <h3>Brothers</h3>
+      <p>Vansh &bull; Devansh &bull; Riyansh &bull; Somesh<br>
+        Rudra &bull; Shivansh &bull; Parth &amp; Madhav</p>
+    </article>
+    <article class="family-group">
+      <h3>Chacha Ji</h3>
+      <p>Shailesh &bull; Akhilesh<br>Yogesh &amp; Chitresh</p>
+    </article>
+    <article class="family-group">
+      <h3>Chachi Ji</h3>
+      <p>Preeti &bull; Rekha<br>Nidhi &amp; Ankita</p>
+    </article>
+    <article class="family-group wide">
+      <h3>Bhanja &amp; Bhanji</h3>
+      <p>Bhanji &ndash; <strong>Avishka</strong></p>
+      <p>Bhanja &ndash; <strong>Aarvik</strong></p>
+    </article>
   </div>
 </section>
 
@@ -737,8 +804,22 @@
   <div class="mehendi-title reveal" style="font-size:2.1rem; margin-top:-6px;">Ceremony</div>
 
   <div class="mehendi-sub reveal">
-    The sun will shine and the flowers will bloom as we celebrate the Mehendi &amp; Haldi of Avani.
-    Let’s enjoy the most colourful functions of all with dance &amp; dance.
+    The sun will shine and the flowers will bloom as we celebrate the Mehendi &amp; Haldi of Shivesh &amp; Unnati.
+    Join us for a joyful celebration filled with colour, music and dance.
+  </div>
+
+  <div class="shlok-section reveal">
+    <h3 class="shlok-heading">शुभ श्लोक</h3>
+    <div class="shlok-list">
+      <blockquote>
+        हल्दी है, चंदन है, रिश्तों का बंधन है।<br>
+        हमारे मामा की शादी में आपका अभिनंदन है।
+      </blockquote>
+      <blockquote>
+        ढोल ताशे हुए पुराने, डीजे का जमाना है।<br>
+        मेरे मामा की शादी में, जरूर जरूर आना है।
+      </blockquote>
+    </div>
   </div>
 
   <div class="divider reveal"></div>
