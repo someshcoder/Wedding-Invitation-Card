@@ -47,14 +47,27 @@
     position: absolute;
     inset: 0;
     display: flex;
+    overflow: hidden;
   }
-  .stripe {
-    flex: 1;
-    background: linear-gradient(180deg, #7a122e 0%, #5c0a22 50%, #4a0818 100%);
-    border-right: 1px solid rgba(201, 162, 39, 0.12);
+  .curtain-panel {
+    width: 50%;
+    height: 100%;
+    background:
+      repeating-linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.12) 1px, rgba(255, 255, 255, 0.035) 3px, transparent 12px, transparent 112px),
+      linear-gradient(180deg, #7a122e 0%, #5c0a22 50%, #4a0818 100%);
+    box-shadow: inset 0 0 42px rgba(0, 0, 0, 0.25);
+    transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1);
   }
-  .stripe:nth-child(even) {
-    background: linear-gradient(180deg, #6b0f28 0%, #4e091c 50%, #3d0715 100%);
+  .curtain-panel.right {
+    background:
+      repeating-linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.12) 1px, rgba(255, 255, 255, 0.035) 3px, transparent 12px, transparent 112px),
+      linear-gradient(180deg, #6b0f28 0%, #4e091c 50%, #3d0715 100%);
+  }
+  #opening.opening .curtain-panel.left {
+    transform: translateX(-100%);
+  }
+  #opening.opening .curtain-panel.right {
+    transform: translateX(100%);
   }
   .curtain-center-line {
     position: absolute;
@@ -64,6 +77,14 @@
     background: linear-gradient(to bottom, transparent, var(--gold), transparent);
     transform: translateX(-50%);
     opacity: 0.7;
+    transition: opacity 0.35s ease;
+  }
+  #opening.opening .curtain-center-line,
+  #opening.opening .opening-content {
+    opacity: 0;
+  }
+  .opening-content {
+    transition: opacity 0.35s ease;
   }
   .opening-content {
     position: relative;
@@ -569,6 +590,14 @@
     .bell.right { right: 12px; }
     .opening-names { font-size: 2.6rem; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .curtain-panel,
+    .curtain-center-line,
+    .opening-content,
+    #opening {
+      transition-duration: 0.01ms;
+    }
+  }
 </style>
 </head>
 <body>
@@ -576,10 +605,8 @@
 <!-- ========== OPENING CURTAIN ========== -->
 <div id="opening">
   <div class="curtain-bg">
-    <div class="stripe"></div><div class="stripe"></div><div class="stripe"></div>
-    <div class="stripe"></div><div class="stripe"></div><div class="stripe"></div>
-    <div class="stripe"></div><div class="stripe"></div><div class="stripe"></div>
-    <div class="stripe"></div><div class="stripe"></div><div class="stripe"></div>
+    <div class="curtain-panel left"></div>
+    <div class="curtain-panel right"></div>
   </div>
   <div class="curtain-center-line"></div>
   <div class="opening-content">
@@ -744,9 +771,16 @@
 
 <script>
   // Opening button
-  document.getElementById('openBtn').addEventListener('click', () => {
-    document.getElementById('opening').classList.add('hidden');
-    document.getElementById('navDots').style.display = 'flex';
+  const opening = document.getElementById('opening');
+  const openButton = document.getElementById('openBtn');
+  const navDots = document.getElementById('navDots');
+  openButton.addEventListener('click', () => {
+    openButton.disabled = true;
+    opening.classList.add('opening');
+    window.setTimeout(() => {
+      opening.classList.add('hidden');
+      navDots.style.display = 'flex';
+    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1500);
   });
 
   // Petals
